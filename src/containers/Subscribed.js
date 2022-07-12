@@ -1,12 +1,14 @@
 import { useParams } from "react-router-dom";
 
-export const Subscribed = () => {
+const Subscribed = () => {
   let params = useParams();
 
   return (
-    <div>
+    <div style={{ margin: "0 30px" }}>
       <p>Thank You For Subscribing!</p>
       <p>Your plan now: {params?.plan}</p>
     </div>
   );
 };
+
+export default Subscribed;

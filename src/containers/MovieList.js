@@ -8,7 +8,12 @@ import { useSearchParams } from "react-router-dom";
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
   const [queryParams, setQueryParams] = useSearchParams("");
-  const [moviesReady, setMoviesReady] = useState(false);
+
+  const setSortParams = (type) => {
+    queryParams.set("sort", type);
+
+    setQueryParams(queryParams);
+  };
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -16,9 +21,8 @@ const MovieList = () => {
         const response = await tmdb.get("trending/movie/week");
 
         setMovies(response.data.results);
-        setMoviesReady(true);
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        console.log(error);
       }
     };
 
@@ -26,18 +30,16 @@ const MovieList = () => {
   }, []);
 
   useEffect(() => {
-    if (!moviesReady) return;
-
     const sortMovies = (type) => {
       if (type === "asc") {
-        const sortedAsc = movies.sort(
+        const sortedAsc = [...movies].sort(
           (a, b) => a.vote_average - b.vote_average
         );
         setMovies(sortedAsc);
       }
 
       if (type === "desc") {
-        const sortedDesc = movies.sort(
+        const sortedDesc = [...movies].sort(
           (a, b) => b.vote_average - a.vote_average
         );
         setMovies(sortedDesc);
@@ -45,13 +47,7 @@ const MovieList = () => {
     };
 
     sortMovies(queryParams.get("sort"));
-  }, [queryParams, moviesReady]);
-
-  const setSortParams = (type) => {
-    queryParams.set("sort", type);
-
-    setQueryParams(queryParams);
-  };
+  }, [queryParams]);
 
   return (
     <>

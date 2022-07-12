@@ -27,6 +27,7 @@ const Pricing = () => {
   const subscribed = (param) => {
     navigate(`/subscribed/${param}`);
   };
+
   return (
     <Box
       sx={{
@@ -84,20 +85,20 @@ const Pricing = () => {
               <TableCell align="center">
                 <Button
                   variant="contained"
-                  onClick={() => subscribed("Bronze")}
+                  onClick={() => subscribed("bronze")}
                 >
                   Buy now
                 </Button>
               </TableCell>
               <TableCell align="center">
-                <Button variant="contained" onClick={() => subscribed("Gold")}>
+                <Button variant="contained" onClick={() => subscribed("gold")}>
                   Buy now
                 </Button>
               </TableCell>
               <TableCell align="center">
                 <Button
                   variant="contained"
-                  onClick={() => subscribed("Platinum")}
+                  onClick={() => subscribed("platinum")}
                 >
                   Buy now
                 </Button>

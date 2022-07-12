@@ -1,11 +1,11 @@
 import "../App.css";
 
-const About = () => {
+const Indonesian = () => {
   return (
     <div style={{ margin: "0 30px" }}>
-      <p>Halaman About</p>
+      <p>Halaman Indonesian</p>
     </div>
   );
 };
 
-export default About;
+export default Indonesian;
