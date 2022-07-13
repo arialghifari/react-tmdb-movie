@@ -51,6 +51,7 @@ const MovieList = () => {
     };
 
     sortMovies(queryParams.get("sort"));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [queryParams, moviesReady]);
 
   return (

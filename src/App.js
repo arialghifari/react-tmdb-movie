@@ -14,6 +14,7 @@ import Indonesian from "./containers/Indonesian";
 import Pricing from "./containers/Pricing";
 import About from "./containers/About";
 import Subscribed from "./containers/Subscribed";
+import NotFound from "./containers/NotFound";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
             <Route path="service" element={<p>Streaming movies</p>} />
           </Route>
           <Route path="subscribed/:plan" element={<Subscribed />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </ThemeProvider>
