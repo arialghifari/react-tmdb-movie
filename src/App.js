@@ -24,7 +24,10 @@ const App = () => {
           <Route path="/" element={<MovieList />} />
           <Route path="indonesian" element={<Indonesian />} />
           <Route path="pricing" element={<Pricing />} />
-          <Route path="about" element={<About />} />
+          <Route path="about" element={<About />}>
+            <Route path="description" element={<p>Provides movies</p>} />
+            <Route path="service" element={<p>Streaming movies</p>} />
+          </Route>
           <Route path="subscribed/:plan" element={<Subscribed />} />
         </Routes>
       </div>

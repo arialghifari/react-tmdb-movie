@@ -8,6 +8,7 @@ import { useSearchParams } from "react-router-dom";
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
   const [queryParams, setQueryParams] = useSearchParams("");
+  const [moviesReady, setMoviesReady] = useState(false);
 
   const setSortParams = (type) => {
     queryParams.set("sort", type);
@@ -21,6 +22,7 @@ const MovieList = () => {
         const response = await tmdb.get("trending/movie/week");
 
         setMovies(response.data.results);
+        setMoviesReady(true);
       } catch (error) {
         console.log(error);
       }
@@ -30,6 +32,8 @@ const MovieList = () => {
   }, []);
 
   useEffect(() => {
+    if (!moviesReady) return;
+
     const sortMovies = (type) => {
       if (type === "asc") {
         const sortedAsc = [...movies].sort(
@@ -47,7 +51,7 @@ const MovieList = () => {
     };
 
     sortMovies(queryParams.get("sort"));
-  }, [queryParams]);
+  }, [queryParams, moviesReady]);
 
   return (
     <>
